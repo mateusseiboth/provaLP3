@@ -68,6 +68,9 @@ public class IndexControle extends HttpServlet {
 			case "list":
 				listReptil(request, response);
 				break;
+			case "editar":
+				editarRepetil(request, response);
+				break;
 			case "home":
 				homeCall(request, response);
 			}
@@ -92,6 +95,35 @@ public class IndexControle extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(request.getServletPath() + "/listReptil.jsp");
 		
 		dispatcher.forward(request, response);
+		
+	}
+	
+	private void editarRepetil(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, SQLException {
+		
+		String idTeste = request.getParameter("id");
+		System.out.println(idTeste);
+		
+		if(idTeste == null || idTeste == "" || idTeste == "undefined") {
+			insertReptil(request, response);
+			System.out.println(request.getParameter("id"));
+		} else {
+			System.out.println("Em else");
+		Long id = Long.parseLong(request.getParameter("id"));
+		String temperatura = request.getParameter("temperatura");
+		String tamanho = request.getParameter("tamanho");
+		
+		Reptil reptil = new Reptil();
+		
+		reptil.setTamanho(tamanho);
+		reptil.setTemperatura(temperatura);
+		reptil.setId(id);
+		
+		Reptil responseReptil = reptilDAO.updateReptil(reptil);
+		
+		String path = request.getContextPath() + request.getServletPath() + "?acao=list";
+		response.sendRedirect(path);
+		}
 		
 	}
 

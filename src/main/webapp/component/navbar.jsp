@@ -31,43 +31,33 @@
 	style="background-image: url('${pageContext.request.contextPath}/resources/img/dark-theme.jpg');
 margin-bottom:90px;
 ">
-
-	<div style="margin-bottom: 50px">
-		<nav class="navbar navbar-expand-lg navbar-dark bg-success">
-			<div class="container-fluid">
-				<a class="navbar-brand"
+<jsp:include page="./modal.jsp" />
+	<div class="row" style="margin-bottom: 50px">
+		
+				<a class="btn btn-primary col-md-2"
 					href="${pageContext.request.contextPath}/public?acao=home">
-					<div class="row text-center">
-						<i class="bi bi-house-fill"></i>
-						<p>ProvaLP3</p>
-					</div>
+						Home
 				</a>
-				<button class="navbar-toggler" type="button"
-					data-bs-toggle="collapse" data-bs-target="#navbarNav"
-					aria-controls="navbarNav" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link active"
-							href="${pageContext.request.contextPath}/public?acao=novo">
-								<div class="row text-center">
-									<i class="bi bi-person-add"></i>
-									<p>Novo reptil</p>
-								</div>
-						</a></li>
-						<li class="nav-item"><a class="nav-link active"
-							href="${pageContext.request.contextPath}/public?acao=list">
+				
+						
+						<a name="btnEditar" id="btnEditar" data-bs-toggle='modal'
+								data-bs-target='#myModal'
+								class='btn btn-outline col-md-2 btn-editar btn-link m-0 bg-primary text-reset text-decoration-none'
+								role="button" data-ripple-color="primary"> Novo
+							</a>	
+						
+						
+						<a class="btn btn-primary col-md-2"
+							href="${pageContext.request.contextPath}/public?acao=list">		
+							Listar todos
+						</a>
+				
 
-								<div class="row text-center">
-									<i class="bi bi-people"></i>
-									<p>Listar todos</p>
-								</div>
-						</a></li>
-					</ul>
-				</div>
-
-			</div>
-		</nav>
 	</div>
+	
+	<script>
+	$(document).ready(function() {
+		$('#myModal').modal('hide');
+	});
+</script>
+	

@@ -34,6 +34,14 @@
 											Tem escama?
 											${lista.escama}
 										</p>
+										
+									<a name="btnEditar" id="btnEditar" data-bs-toggle='modal'
+								data-bs-target='#myModal' data-id='${lista.id}'
+								data-temperatura='${lista.temperatura}' data-tamanho='${lista.tamanho}' data-escama='${lista.escama}'
+								class='btn btn-outline btn-editar btn-link m-0 bg-primary text-reset text-decoration-none'
+								role="button" data-ripple-color="primary"> <i
+								class="bi bi-pencil"></i>
+							</a>	
 
 									</div>
 								</div>
@@ -44,5 +52,29 @@
 			</c:forEach>
 		</div>
 	</div>
+	
+	<jsp:include page="../component/modal.jsp" />
+	
+<script>
+	$(document).ready(function() {
+		$('#myModal').modal('hide');
+	});
+</script>
 
 <jsp:include page="../component/footer.jsp"/>
+
+
+<script>
+  const btnEditar = document.querySelectorAll('.btn-editar');
+  const inputId = document.querySelector('input[name=id]');
+  const inputTemperatura = document.querySelector('input[name=temperatura]');
+  const inputTamanho = document.querySelector('input[name=tamanho]');
+
+  btnEditar.forEach(btn => {
+    btn.addEventListener('click', () => {
+      inputId.value = btn.dataset.id != undefined ? btn.dataset.id : "" ;
+      inputTemperatura.value = btn.dataset.temperatura != undefined ? btn.dataset.temperatura : "";
+      inputTamanho.value = btn.dataset.tamanho != undefined ? btn.dataset.tamanho : "";
+    });
+  });
+</script>

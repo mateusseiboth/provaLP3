@@ -40,6 +40,14 @@
 
 </main>
 <jsp:include page="/component/footer.jsp" />
-
+<jsp:include page="component/modal.jsp" />
 </body>
+<script>
+	$(document).ready(function() {
+		$('#myModal').modal('hide');
+	});
+</script>
 </html>
+
+	
+	

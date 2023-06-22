@@ -75,5 +75,21 @@ public class ReptilDAO {
 
 		return reptilList;
 	}
+	
+	public Reptil updateReptil(Reptil reptil) throws SQLException {
+		String sql = "update reptil set tamanho=?, temperatura=?"
+				+ " where id=?";		    
+		
+		connect();
+
+		PreparedStatement statement = connection.prepareStatement(sql);
+		statement.setString(1, reptil.getTamanho());
+		statement.setString(2, reptil.getTemperatura());
+		statement.setLong(3, reptil.getId());
+		statement.executeUpdate();
+		disconnect();
+		
+		return reptil;
+   }
 
 }
